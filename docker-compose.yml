@@ -4,12 +4,12 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile   # Gebruik het Dockerfile dat je zojuist hebt gemaakt
+      dockerfile: Dockerfile   # Gebruik Dockerfile
     container_name: php-web
     ports:
       - "8080:80"
     volumes:
-      - ./html:/var/www/html   # Zorg ervoor dat je een `html` directory hebt met je PHP bestanden
+      - ./html:/var/www/html   # html is de map op de host, /var/www/html is de map in de container
     depends_on:
       - db
     networks:

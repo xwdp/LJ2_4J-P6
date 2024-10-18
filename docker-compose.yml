@@ -2,42 +2,44 @@ version: '3.8'
 
 services:
   web:
-    image: php:8.2-apache   # The latest stable version of PHP 8.2
+    build:
+      context: .
+      dockerfile: Dockerfile   # Gebruik het Dockerfile dat je zojuist hebt gemaakt
     container_name: php-web
     ports:
-      - "8080:80"           # Expose port 80 (Apache) on port 8080
+      - "8080:80"
     volumes:
-      - ./html:/var/www/html # Map local `html` directory to Apache's web root
+      - ./html:/var/www/html   # Zorg ervoor dat je een `html` directory hebt met je PHP bestanden
     depends_on:
-      - db                   # Wait for the `db` service to be ready
+      - db
     networks:
       - app-network
 
   db:
-    image: mysql:8.1         # The latest stable version of MySQL 8.1
+    image: mysql:8.1
     container_name: mysql-db
     environment:
-      MYSQL_ROOT_PASSWORD: root   # Set root password for MySQL
-      MYSQL_DATABASE: phplessen           # Create an initial database
-      MYSQL_USER: phples                    # Create a non-root user
-      MYSQL_PASSWORD: phples        # Set password for the non-root user
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: phplessen
+      MYSQL_USER: phples
+      MYSQL_PASSWORD: phples
     ports:
-      - "3306:3306"           # Expose MySQL port 3306
+      - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql # Persist MySQL data on local disk
+      - db_data:/var/lib/mysql
     networks:
       - app-network
 
   phpmyadmin:
-    image: phpmyadmin:latest  # The latest stable version of phpMyAdmin
+    image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
     environment:
-      PMA_HOST: db            # Connect phpMyAdmin to the `db` service
-      MYSQL_ROOT_PASSWORD: root # Provide root password for MySQL
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
     ports:
-      - "8081:80"             # Expose phpMyAdmin on port 8081
+      - "8081:80"
     depends_on:
-      - db                    # Wait for the `db` service to be ready
+      - db
     networks:
       - app-network
 

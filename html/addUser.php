@@ -3,6 +3,7 @@ require_once 'classes/User.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = new User();
     $user->addUser($_POST['username'], $_POST['password'], $_POST['email']);
+    header('Location: showUsers.php?msg=User added');
 }
 ?>
 <!DOCTYPE html>

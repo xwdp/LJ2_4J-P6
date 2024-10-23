@@ -1,7 +1,6 @@
 <?php
 if(!isset($_GET['id'])){
     header('Location: showUsers.php');
-
 }
 
 require_once 'classes/User.php';

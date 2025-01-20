@@ -1,0 +1,14 @@
+.search{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #990800;
+    color: #fff;
+    border-radius: 2vh;
+    justify-content: center;
+    border-style: none;
+    box-shadow: 0.3vh 0.3vh #4d0400;
+    width: 45vh;
+    height: 5vh;
+    margin: 15vh;
+}

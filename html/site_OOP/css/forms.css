@@ -1,0 +1,27 @@
+/* brian */
+.formthing {
+    display: block;
+    margin: auto;
+    height: 3vh;
+    width: 75%;
+    border-style: none;
+    color: #dfdfff;
+  }
+  
+  .formbubble {
+    box-shadow: 0.2vh 0.2vh #4d0400;
+    border-radius: 0.25em;
+    background-color: #580601;
+  }
+  
+  #subject {
+    height: 30vh;
+  }
+  
+  #submit {
+    width: 50%;
+    height: 5vh;
+    font-weight: bold;
+    font-size: large;
+  }
+  /* brian */

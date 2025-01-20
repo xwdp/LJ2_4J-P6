@@ -1,0 +1,17 @@
+/* brian */
+#bedankt {
+    display: flex;
+    background-color: #990800;
+    font-size: 5rem;
+    justify-content: center;
+    margin: 5vh auto 0 auto;
+    padding: 2vh;
+    border-radius: 0.75em;
+    width: 55%;
+    color: #dfdfff;
+  }
+  
+  .disclaimer {
+    color: #990800;
+  };  
+  /* brian */

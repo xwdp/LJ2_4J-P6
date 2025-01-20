@@ -1,0 +1,27 @@
+#AboutUs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .Bout {
+    color: #dfdfff;
+    background-color: #990800;
+    box-shadow: 0.4vh 0.4vh #6e0701;
+    border-radius: 2vh;
+    width: 50vh;
+    padding: 0.5em;
+    margin-top: 5vh;
+  }
+  
+  .Bout > img {
+    display: block;
+    margin: 5vh auto 0 auto;
+    border-radius: 4vh;
+    width: 75%;
+    box-shadow: 0.3vh 0.3vh #4d0400;
+  }
+  
+  .brianapo {
+    margin-bottom: 1vh;
+  }

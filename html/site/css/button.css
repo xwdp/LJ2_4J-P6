@@ -1,0 +1,28 @@
+/*mouse over button*/
+.topnav a:hover {
+    background-color: #ffffff;
+    box-shadow: 0.3vh 0.3vh #6e0701;
+    color: #000000;
+  }
+  /*active button*/
+  .topnav a.active {
+    animation: buttonchange 500ms;
+    background-color: #990800;
+    box-shadow: 0.3vh 0.3vh #6e0701;
+    color: #ffffff;
+  }
+/*button animation*/
+@keyframes buttonchange {
+    0% { background-color: #ffffff; }
+    10% { background-color: #ffeae6; }
+    20% { background-color: #ffccc2; }
+    30% { background-color: #ffaf9d; }
+    40% { background-color: #ff9279; }
+    50% { background-color: #ff7555; }
+    60% { background-color: #ff5830; }
+    70% { background-color: #ff3c0c; }
+    80% { background-color: #cc1c00; }
+    90% { background-color: #b21600; }
+    100% { background-color: #990800; }
+  }
+  

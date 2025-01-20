@@ -1,0 +1,118 @@
+<!DOCTYPE html> 
+<html lang="nl">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="author" content="B. de Haan & j. Trel">
+      <title>Mbo Cinnemas</title>
+      <meta name="description" content="MBO Cinemas: Your ultimate destination for the latest movies, comfortable screenings, and easy online ticket booking. Enjoy blockbusters, indie films, and special screenings all in one place. Book now and experience cinema at its best!">
+      <meta name="keywords" content="movies, cinema, film screenings, theaters, showtimes, ticket booking, blockbusters, new releases, movie trailers, film festival, Hollywood movies, independent films, action movies, drama, comedy, sci-fi, movie tickets, online booking, MBO Cinemas">       
+
+      <link rel="icon" href="../img/logo/Gemini_Generated_Image_upriieupriieupri.jpeg">
+
+      <link rel="stylesheet" href="../css/general.css">
+      <link rel="stylesheet" href="../css/navbar.css">
+      <link rel="stylesheet" href="../css/logo.css">
+      <link rel="stylesheet" href="../css/button.css">
+      <link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/product.css">
+<link rel="stylesheet" href="../css/search.css">
+<link rel="icon" href="../img/logo/Gemini_Generated_Image_upriieupriieupri.jpeg">
+<script src="searchEngine.ts" defer></script>
+<script src="filterEngine.ts" defer></script>
+<script src="dropdown.ts" defer></script>
+</head>
+<body>
+    <header>
+        <nav class="logo">
+            <a href="index.php"><img id="logo" src="../img/logo/Gemini_Generated_Image_upriieupriieupri.jpeg" alt="logo GameStars"></a>
+        </nav>
+        <h1 id="logonaam">Mbo Cinnemas</h1>
+        <nav class="topnav">
+            <a href="index.php">Home</a>
+            <a href="films.php">Films</a>    
+            <a href="reserveren.php">Reserveren</a>   
+            <a href="agenda.php">Agenda</a>   
+            <a href="upcomming.php">Upcoming</a>
+            <a class="active" href="zoeken.php">Zoeken🔎</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <form id="searchForm">
+                <input class="search" type="text" name="q" id="searchInput" placeholder="Search🔎">
+                <button class="search" type="submit">Search🔎</button>
+            </form>
+        </section>
+        <section class="dropdown">
+            <button class="dropbtn">Filters</button>
+            <div class="dropdown-content">
+                <form id="filterForm">
+                    <label for="director">Director:</label>
+                    <input type="text" id="director" name="director">
+                    <label for="releaseYear">Release Year:</label>
+                    <input type="number" id="releaseYear" name="releaseYear">
+                    <label for="genre">Genre:</label>
+                    <input type="text" id="genre" name="genre">
+                    <label for="roomNumber">Room Number:</label>
+                    <input type="number" id="roomNumber" name="roomNumber">
+                    <label for="rating">Rating:</label>
+                    <input type="number" id="rating" name="rating" min="1" max="5">
+                    <button type="submit">Apply Filters</button>
+                </form>
+            </div>
+        </section>
+        <section id="searchResults">
+            <!-- Search results will be displayed here -->
+        </section>
+    </main> 
+
+    <script>
+        import { Films, searchFilmsByName } from '../scripts/searchEngine.ts';
+        import { filterFilmsByDirector, filterFilmsByReleaseYear, filterFilmsByGenre, filterFilmsByRoomNumber, filterFilmsByRating } from '../scripts/filterEngine.js';
+
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const query = document.getElementById('searchInput').value;
+            const results = searchFilmsByName(films, query);
+            displayResults(results);
+        });
+
+        document.getElementById('filterForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let results = films;
+            const director = document.getElementById('director').value;
+            const releaseYear = document.getElementById('releaseYear').value;
+            const genre = document.getElementById('genre').value;
+            const roomNumber = document.getElementById('roomNumber').value;
+            const rating = document.getElementById('rating').value;
+
+            if (director) results = filterFilmsByDirector(results, director);
+            if (releaseYear) results = filterFilmsByReleaseYear(results, parseInt(releaseYear));
+            if (genre) results = filterFilmsByGenre(results, genre);
+            if (roomNumber) results = filterFilmsByRoomNumber(results, parseInt(roomNumber));
+            if (rating) results = filterFilmsByRating(results, parseInt(rating));
+
+            displayResults(results);
+        });
+
+        function displayResults(results) {
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
+            results.forEach(film => {
+                const filmElement = document.createElement('div');
+                filmElement.innerHTML = `
+                    <h3>${film.title}</h3>
+                    <p>Director: ${film.director}</p>
+                    <p>Release Year: ${film.releaseYear}</p>
+                    <p>Genre: ${film.genre}</p>
+                    <p>Room: ${film.roomNumber}</p>
+                    <p>Rating: ${'⭐'.repeat(film.rating)}</p>
+                `;
+                resultsContainer.appendChild(filmElement);
+            });
+        }
+    </script>
+</body>
+</html>

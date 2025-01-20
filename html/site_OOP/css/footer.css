@@ -1,0 +1,74 @@
+/* brian */
+/* Footer Styles */
+footer {
+    display: flex;
+    justify-content: space-between;
+    border-top-left-radius: 5vh;
+    border-top-right-radius: 5vh;
+    align-items: center;/* Center horizontally */
+    flex-direction: row;/* Stack content horazontaly */ 
+    background-color: hsl(0, 0%, 13%);
+    color: #ffffff;
+    padding: 2vh 5vw;
+}
+
+/* Columns inside Footer */
+footer div {
+    flex: 1; /* Ensures equal spacing */
+    display: flex; 
+
+    padding: 0 1vw;
+}
+
+/* Titles in Footer */
+footer h4 {
+    margin-bottom: 1vh;
+}
+
+/* Paragraphs in Footer */
+footer p {
+    margin: 0;
+    text-align: center; /* Center text within paragraphs */
+}
+
+/* Social Media Icons */
+.social-media {
+    flex: 7; /* Makes the social media section wider */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center; /* Center icons vertically */
+}
+
+.social-media a {
+    text-decoration: none;
+}
+
+.social-media img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border-style: solid;
+    border-color: #990800;
+    box-shadow: 0.3vh 0.3vh #6e0701;
+}
+
+@media screen and (max-width: 480px){
+    footer{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    footer{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .social-media{
+        flex: 1;
+    }
+    
+}
+/* brian */
